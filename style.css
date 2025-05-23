@@ -1,0 +1,400 @@
+/* Global Styles */
+body {
+    font-family: 'Lato', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Primary Colors */
+:root {
+    --primary-green: #4CAF50;
+    --dark-text: #333333;
+    --light-text: #ffffff;
+    --header-bg: #f8f8f8;
+    --button-bg: #5cb85c;
+    --button-hover-bg: #4cae4c;
+    --footer-bg: #333333;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-color: var(--header-bg);
+    border-bottom: 1px solid #ddd;
+    position: relative; /* For hamburger positioning */
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary-green);
+}
+
+/* Navigation - Default for larger screens */
+nav {
+    display: flex; /* Changed from default block to flex for easier alignment if needed */
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+nav ul li {
+    margin-left: 1.5em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: bold;
+    padding-bottom: 0.2em;
+}
+
+nav ul li a:hover {
+    color: var(--primary-green);
+    border-bottom: 2px solid var(--primary-green);
+}
+
+/* Hamburger Menu - Hidden by default on larger screens */
+.hamburger-toggle {
+    display: none; /* Hide checkbox */
+}
+
+.hamburger-icon {
+    display: none; /* Hide label (hamburger icon) by default */
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Ensure it's above other header content */
+}
+
+.hamburger-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark-text);
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Hero Section */
+.hero {
+    background-image: url('https://github.com/shengyuan/test-google-jules/blob/main/%E6%A8%82%E8%BE%B2%E5%AE%98%E7%B6%B2%E9%A6%96%E9%A0%81.jpg?raw=true');
+    background-size: cover;
+    background-position: center;
+    padding: 4em 2em;
+    text-align: center;
+    color: var(--light-text);
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Increased shadow for better readability */
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Increased shadow */
+}
+
+.button {
+    display: inline-block;
+    padding: 0.8em 2em;
+    background-color: var(--button-bg);
+    color: var(--light-text);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none; /* Ensure no default border interferes */
+}
+
+.button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Features Section */
+.features {
+    padding: 3em 2em;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5em;
+    margin-bottom: 1.5em;
+    color: var(--dark-text);
+}
+
+.feature-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.feature-box {
+    width: calc(33.333% - 2em);
+    min-width: 280px; /* Ensures readability on slightly smaller than 3-col */
+    padding: 2em;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 1em; /* Add margin for wrapped items */
+}
+
+.icon-placeholder {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-green);
+    border-radius: 50%;
+    margin: 0 auto 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-text);
+    font-size: 2em;
+}
+
+.feature-box h3 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+    color: var(--primary-green);
+}
+
+.feature-box p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Call to Action Section */
+.cta {
+    background-color: var(--header-bg);
+    padding: 3em 2em;
+    text-align: center;
+}
+
+.cta p {
+    font-size: 1.3em;
+    margin-bottom: 1.5em;
+    color: var(--dark-text);
+}
+
+.cta .button {
+    margin: 0.5em; /* Give buttons some space when they stack */
+    background-color: var(--primary-green);
+}
+
+.cta .button:hover {
+    background-color: #388e3c;
+}
+
+/* Footer */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--light-text);
+    text-align: center;
+    padding: 1.5em 2em;
+}
+
+footer p {
+    font-size: 0.9em;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.8em; /* Slightly reduce logo size */
+    }
+
+    /* Hamburger Menu Activation */
+    .hamburger-icon {
+        display: block; /* Show hamburger icon */
+        position: absolute; /* Position relative to header */
+        right: 2em;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    nav {
+        display: none; /* Hide original nav */
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        width: 100%;
+        background-color: var(--header-bg);
+        border-top: 1px solid #ddd;
+        z-index: 1000; /* Ensure nav is above content below */
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #eee; /* Separator for items */
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    nav ul li a {
+        display: block; /* Make links take full width */
+        padding: 1em;
+        width: 100%;
+        color: var(--dark-text);
+    }
+    nav ul li a:hover {
+        background-color: #e9e9e9;
+        color: var(--primary-green);
+        border-bottom: none; /* Remove border hover for vertical menu */
+    }
+
+    /* Show nav when checkbox is checked */
+    .hamburger-toggle:checked + .hamburger-icon + nav {
+        display: flex; /* Or block, depending on desired layout */
+    }
+
+    /* Hamburger Icon Animation (X shape when active) */
+    .hamburger-toggle:checked + .hamburger-icon span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger-toggle:checked + .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-toggle:checked + .hamburger-icon span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+
+    /* Hero Section Adjustments */
+    .hero {
+        padding: 3em 1em; /* Reduce padding */
+    }
+    .hero h1 {
+        font-size: 2em; /* Reduce font size */
+    }
+    .hero p {
+        font-size: 1.1em; /* Reduce font size */
+    }
+    .button { /* Ensure buttons have min tap size */
+        padding: 0.8em 1.5em;
+        font-size: 0.9em;
+    }
+
+    /* Features Section Adjustments */
+    .features {
+        padding: 2em 1em;
+    }
+    .features h2 {
+        font-size: 2em;
+    }
+    .feature-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .feature-box {
+        width: 90%; /* Increase width for better use of space */
+        min-width: 0; /* Reset min-width */
+        margin-bottom: 1.5em;
+        padding: 1.5em;
+    }
+    .feature-box h3 {
+        font-size: 1.5em;
+    }
+    .feature-box p {
+        font-size: 0.95em;
+    }
+
+    /* Call to Action Section Adjustments */
+    .cta {
+        padding: 2em 1em;
+    }
+    .cta p {
+        font-size: 1.1em;
+    }
+    .cta .button {
+        display: block;
+        width: 70%;
+        margin: 0.8em auto; /* Center buttons and add vertical space */
+        padding: 0.9em 1.5em;
+        font-size: 1em;
+    }
+
+    /* Footer Adjustments */
+    footer {
+        padding: 1em;
+    }
+    footer p {
+        font-size: 0.8em;
+    }
+}
+
+/* Further adjustments for very small screens (e.g., 320px, 480px) */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5em;
+    }
+    header {
+        padding: 0.8em 1.5em; /* Reduce header padding */
+    }
+     .hamburger-icon {
+        right: 1.5em;
+    }
+
+    .hero {
+        padding: 2em 1em;
+    }
+    .hero h1 {
+        font-size: 1.8em;
+    }
+    .hero p {
+        font-size: 1em;
+    }
+    .button {
+        padding: 0.7em 1.2em;
+        font-size: 0.85em;
+    }
+
+    .features h2 {
+        font-size: 1.8em;
+    }
+    .feature-box {
+        width: 95%; /* Maximize width */
+        padding: 1em;
+    }
+    .feature-box h3 {
+        font-size: 1.3em;
+    }
+
+    .cta p {
+        font-size: 1em;
+    }
+    .cta .button {
+        width: 80%;
+        font-size: 0.9em;
+    }
+}
