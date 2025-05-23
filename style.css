@@ -20,73 +20,132 @@ body {
     --primary-green: #4CAF50;
     --dark-text: #333333;
     --light-text: #ffffff;
-    --header-bg: #f8f8f8;
+    --header-bg: #f8f8f8; /* Used for open mobile menu background */
     --button-bg: #5cb85c;
     --button-hover-bg: #4cae4c;
     --footer-bg: #333333;
 }
 
-/* Header */
+/* Header - Overlay Styling */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em 2em;
-    background-color: var(--header-bg);
-    border-bottom: 1px solid #ddd;
-    position: relative; /* For hamburger positioning */
+    padding: 1.5em 3em; /* Increased padding */
+    background-color: transparent; /* Overlay */
+    position: absolute;            /* Overlay */
+    width: 100%;                   /* Overlay */
+    top: 0;                        /* Overlay */
+    left: 0;                       /* Overlay */
+    z-index: 100;                  /* Overlay - above hero */
 }
 
+/* Logo Styling */
 .logo {
-    font-size: 2em;
-    font-weight: bold;
-    color: var(--primary-green);
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Assuming logo might be a link someday */
 }
 
-/* Navigation - Default for larger screens */
+.logo-img-placeholder {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #ccc; /* Temporary placeholder */
+    /* border: 1px solid #999; */ /* Can be removed if image is used */
+    border-radius: 50%; /* Example: circular placeholder */
+    margin-right: 15px; /* Increased spacing */
+    vertical-align: middle; /* In case flex alignment is not perfect */
+}
+
+.logo-text-container {
+    display: flex; /* Changed to flex for better control if needed */
+    flex-direction: column;
+    vertical-align: middle; /* In case flex alignment is not perfect */
+}
+
+.logo-main {
+    display: block;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--light-text); /* White for overlay */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.logo-subtitle {
+    display: block;
+    font-size: 0.75em; /* Adjusted from 0.8em in prompt for better fit */
+    color: var(--light-text); /* White for overlay */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Navigation - Default for larger screens (Overlay) */
 nav {
-    display: flex; /* Changed from default block to flex for easier alignment if needed */
+    display: flex; 
 }
 
 nav ul {
     list-style-type: none;
     display: flex;
-    align-items: center; /* Align items vertically */
+    align-items: center; 
 }
 
 nav ul li {
-    margin-left: 1.5em;
+    margin-left: 2.2em; /* Increased spacing */
 }
 
 nav ul li a {
     text-decoration: none;
-    color: var(--dark-text);
+    color: var(--light-text); /* White for overlay */
     font-weight: bold;
-    padding-bottom: 0.2em;
+    padding-bottom: 0.2em; 
+    transition: color 0.3s ease, border-color 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Readability on hero */
 }
 
-nav ul li a:hover {
-    color: var(--primary-green);
-    border-bottom: 2px solid var(--primary-green);
+nav ul li a:not(.nav-login-button):hover {
+    color: var(--primary-green); /* Or a brighter white: #f0f0f0 */
+    border-bottom: 2px solid var(--primary-green); /* Or var(--light-text) or none */
 }
+
+/* Navigation Login Button Style (Overlay) */
+.nav-login-button {
+    background-color: var(--primary-green); /* Or a semi-transparent white */
+    color: var(--light-text) !important; 
+    padding: 0.7em 1.5em; /* Adjusted padding for better look */
+    border-radius: 20px; 
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-bottom: none; 
+    text-shadow: none; /* Button background provides contrast */
+}
+
+.nav-login-button:hover {
+    background-color: var(--button-hover-bg); 
+    color: var(--light-text) !important;
+    border-bottom: none !important; 
+}
+
 
 /* Hamburger Menu - Hidden by default on larger screens */
 .hamburger-toggle {
-    display: none; /* Hide checkbox */
+    display: none; 
 }
 
 .hamburger-icon {
-    display: none; /* Hide label (hamburger icon) by default */
+    display: none; 
     cursor: pointer;
     padding: 10px;
-    z-index: 1001; /* Ensure it's above other header content */
+    z-index: 1001; /* Above other header content, below open mobile menu */
 }
 
-.hamburger-icon span {
+.hamburger-icon span { /* Hamburger bars for overlay */
     display: block;
     width: 25px;
     height: 3px;
-    background-color: var(--dark-text);
+    background-color: var(--light-text); /* White for overlay */
     margin: 5px 0;
     transition: all 0.3s ease-in-out;
 }
@@ -97,21 +156,26 @@ nav ul li a:hover {
     background-image: url('https://github.com/shengyuan/test-google-jules/blob/main/%E6%A8%82%E8%BE%B2%E5%AE%98%E7%B6%B2%E9%A6%96%E9%A0%81.jpg?raw=true');
     background-size: cover;
     background-position: center;
-    padding: 4em 2em;
+    padding: 6em 2em 4em; /* Increased top padding to account for overlay header */
     text-align: center;
     color: var(--light-text);
+    min-height: 400px; /* Ensure hero has some height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero h1 {
     font-size: 3em;
     margin-bottom: 0.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Increased shadow for better readability */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
 
 .hero p {
     font-size: 1.5em;
     margin-bottom: 1.5em;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Increased shadow */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); 
 }
 
 .button {
@@ -123,7 +187,7 @@ nav ul li a:hover {
     border-radius: 25px;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    border: none; /* Ensure no default border interferes */
+    border: none; 
 }
 
 .button:hover {
@@ -151,13 +215,13 @@ nav ul li a:hover {
 
 .feature-box {
     width: calc(33.333% - 2em);
-    min-width: 280px; /* Ensures readability on slightly smaller than 3-col */
+    min-width: 280px; 
     padding: 2em;
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 1em; /* Add margin for wrapped items */
+    margin-bottom: 1em; 
 }
 
 .icon-placeholder {
@@ -186,7 +250,7 @@ nav ul li a:hover {
 
 /* Call to Action Section */
 .cta {
-    background-color: var(--header-bg);
+    background-color: var(--header-bg); /* Using header-bg for consistency, was f4f4f4 */
     padding: 3em 2em;
     text-align: center;
 }
@@ -198,7 +262,7 @@ nav ul li a:hover {
 }
 
 .cta .button {
-    margin: 0.5em; /* Give buttons some space when they stack */
+    margin: 0.5em; 
     background-color: var(--primary-green);
 }
 
@@ -220,65 +284,98 @@ footer p {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .logo {
-        font-size: 1.8em; /* Slightly reduce logo size */
+    header { /* Ensure padding is manageable on mobile for overlay */
+        padding: 0.8em 1.5em;
+    }
+    .logo-main {
+        font-size: 1.5em; 
+    }
+    .logo-subtitle {
+        font-size: 0.65em; 
+    }
+    .logo-img-placeholder {
+        width: 35px;
+        height: 35px;
     }
 
     /* Hamburger Menu Activation */
     .hamburger-icon {
-        display: block; /* Show hamburger icon */
-        position: absolute; /* Position relative to header */
-        right: 2em;
+        display: block; 
+        position: absolute; 
+        right: 1.5em; /* Adjusted from 2em for new header padding */
         top: 50%;
         transform: translateY(-50%);
     }
 
-    nav {
-        display: none; /* Hide original nav */
+    nav { /* Mobile navigation container - when open */
+        display: none; 
         position: absolute;
-        top: 100%; /* Position below header */
+        top: 0; /* Cover header space */
         left: 0;
         width: 100%;
-        background-color: var(--header-bg);
-        border-top: 1px solid #ddd;
-        z-index: 1000; /* Ensure nav is above content below */
+        height: 100vh; /* Full height for overlay menu */
+        background-color: var(--header-bg); /* Light background for open menu */
+        border-top: none; /* No border needed */
+        z-index: 1000; /* Below hamburger icon's X, but above page content */
+        padding-top: 4em; /* Space for X icon */
+        overflow-y: auto; /* Allow scrolling if many items */
     }
 
     nav ul {
         flex-direction: column;
         width: 100%;
         padding: 0;
+        align-items: center; /* Center items */
     }
 
     nav ul li {
         margin: 0;
-        width: 100%;
+        width: 80%; /* Content width for menu items */
         text-align: center;
-        border-bottom: 1px solid #eee; /* Separator for items */
+        border-bottom: 1px solid #ddd; 
     }
 
     nav ul li:last-child {
         border-bottom: none;
     }
 
-    nav ul li a {
-        display: block; /* Make links take full width */
+    nav ul li a { /* Links in open mobile menu */
+        display: block; 
         padding: 1em;
         width: 100%;
-        color: var(--dark-text);
+        color: var(--dark-text) !important; /* Dark text for light background */
+        text-shadow: none; /* Remove shadow for light background */
+        font-size: 1.2em; /* Larger for easier tapping */
     }
-    nav ul li a:hover {
-        background-color: #e9e9e9;
-        color: var(--primary-green);
-        border-bottom: none; /* Remove border hover for vertical menu */
+    nav ul li a:not(.nav-login-button):hover { 
+        background-color: #e0e0e0; /* Slightly darker hover for menu items */
+        color: var(--primary-green) !important;
+        border-bottom: none; 
+    }
+
+    /* Button in open mobile menu */
+    .nav-login-button {
+        display: inline-block; 
+        width: auto; 
+        margin: 1em auto; /* More margin in vertical layout */
+        padding: 0.8em 1.8em; 
+        background-color: var(--primary-green); /* Ensure it's green */
+        color: var(--light-text) !important;
+    }
+     nav ul li a.nav-login-button:hover { 
+        background-color: var(--button-hover-bg); 
+        color: var(--light-text) !important;
     }
 
     /* Show nav when checkbox is checked */
     .hamburger-toggle:checked + .hamburger-icon + nav {
-        display: flex; /* Or block, depending on desired layout */
+        display: flex; 
     }
 
-    /* Hamburger Icon Animation (X shape when active) */
+    /* Hamburger Icon Animation (X shape when active) - color for open menu */
+    .hamburger-toggle:checked + .hamburger-icon span {
+        background-color: var(--dark-text); /* Dark X for light menu background */
+    }
     .hamburger-toggle:checked + .hamburger-icon span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
@@ -292,15 +389,15 @@ footer p {
 
     /* Hero Section Adjustments */
     .hero {
-        padding: 3em 1em; /* Reduce padding */
+        padding: 5em 1em 3em; /* Adjusted top padding */
     }
     .hero h1 {
-        font-size: 2em; /* Reduce font size */
+        font-size: 2em; 
     }
     .hero p {
-        font-size: 1.1em; /* Reduce font size */
+        font-size: 1.1em; 
     }
-    .button { /* Ensure buttons have min tap size */
+    .button { 
         padding: 0.8em 1.5em;
         font-size: 0.9em;
     }
@@ -317,8 +414,8 @@ footer p {
         align-items: center;
     }
     .feature-box {
-        width: 90%; /* Increase width for better use of space */
-        min-width: 0; /* Reset min-width */
+        width: 90%; 
+        min-width: 0; 
         margin-bottom: 1.5em;
         padding: 1.5em;
     }
@@ -339,7 +436,7 @@ footer p {
     .cta .button {
         display: block;
         width: 70%;
-        margin: 0.8em auto; /* Center buttons and add vertical space */
+        margin: 0.8em auto; 
         padding: 0.9em 1.5em;
         font-size: 1em;
     }
@@ -353,20 +450,28 @@ footer p {
     }
 }
 
-/* Further adjustments for very small screens (e.g., 320px, 480px) */
+/* Further adjustments for very small screens */
 @media (max-width: 480px) {
-    .logo {
-        font-size: 1.5em;
-    }
     header {
-        padding: 0.8em 1.5em; /* Reduce header padding */
+        padding: 0.6em 1em; /* Further reduce padding */
+    }
+    .logo-main {
+        font-size: 1.3em;
+    }
+    .logo-subtitle {
+        display: none; /* Hide subtitle on very small screens */
+    }
+    .logo-img-placeholder {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
     }
      .hamburger-icon {
-        right: 1.5em;
+        right: 1em;
     }
 
     .hero {
-        padding: 2em 1em;
+        padding: 4em 1em 2em; /* Adjusted top padding */
     }
     .hero h1 {
         font-size: 1.8em;
@@ -383,7 +488,7 @@ footer p {
         font-size: 1.8em;
     }
     .feature-box {
-        width: 95%; /* Maximize width */
+        width: 95%; 
         padding: 1em;
     }
     .feature-box h3 {
